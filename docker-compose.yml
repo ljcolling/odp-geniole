@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  analysis:
+    build: 
+      dockerfile: .docker/Dockerfile
+      context: .
+    container_name: lcolling/odp-geniole
+    image: lcolling/odp-geniole
+    volumes:
+      - .:/home/rstudio
+    environment:
+      DISABLE_AUTH: 'true'
+    working_dir: /home/rstudio
+    command: make analysis-docker
+  download:
+    container_name: lcolling/r-verse-base:4.0.0 
+    image: lcolling/r-verse-base:4.0.0 
+    volumes:
+      - .:/home/rstudio
+    environment:
+      DISABLE_AUTH: 'true'
+    working_dir: /home/rstudio
+    command: make download-docker
+  document:
+    container_name: rocker/verse:4.0.0
+    image: rocker/verse:4.0.0
+    volumes:
+      - .:/home/rstudio
+    environment:
+      DISABLE_AUTH: 'true'
+    working_dir: /home/rstudio
+    command: make document-docker
