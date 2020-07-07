@@ -24,7 +24,7 @@ jobs:
     # Runs a single command using the runners shell
     - name: building
       run: |
-        make build
+        make all
         echo "http://git.colling.net.nz/$(basename `ls docs/*.pdf`)" >> index.html
         
 
