@@ -1,3 +1,8 @@
+all: 
+	make download
+	make analysis
+	make document
+
 # Download the data
 download: ./code/download.R docker-compose.yml 
 	make made/geniole_download_info.Rdata 
