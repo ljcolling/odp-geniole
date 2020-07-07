@@ -29,7 +29,7 @@ document: made/geniole.Rdata made/geniole_download_info.Rdata
 	docker-compose run --rm document
 
 document-docker: 
-	R -e "xfun::)
+	R -e "xfun::pkg_attach2('rmarkdown')"
 	R -e "rmarkdown::render('docs/geniole-LJC.Rmd')"
 
 clean:
