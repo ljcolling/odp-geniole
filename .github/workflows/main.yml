@@ -25,12 +25,13 @@ jobs:
     - name: building
       run: |
         make all
-        echo "<a href=\"$(basename `ls docs/*.pdf`)\">Document</a>" > index.html  
+        echo "<a href=\"docs/$(basename `ls docs/*.pdf`)\">Document</a>" > index.html  
         
 
     # Runs a set of commands using the runners shell
     - uses: EndBug/add-and-commit@v4
       with:
+        remove: .
         add: docs/*.pdf index.html
         author_name: Lincoln Colling
         author_email: lincoln@colling.net.nz
